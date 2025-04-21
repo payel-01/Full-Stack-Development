@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Info Form - Tech Fest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #764ba2;
+        }
+
+        .logo img {
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            background: #fff;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            width: 350px;
+            animation: fadeInUp 1s ease forwards;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.6rem;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #764ba2;
+            outline: none;
+            box-shadow: 0 0 8px rgba(118, 75, 162, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #5c3c9e;
+        }
+
+        .about {
+            max-width: 400px;
+            color: white;
+            animation: fadeInRight 1.5s ease forwards;
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+
+        @keyframes fadeInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .about{
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .about img {
+            margin-top: 1rem;
+            max-width: 150px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .card-section {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: pulse 3s infinite ease-in-out;
+            z-index: 0;
+        }
+
+        .glow.one {
+            top: -50px;
+            left: -50px;
+        }
+
+        .glow.two {
+            bottom: -50px;
+            right: -50px;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 2px solid #4d9499;
+            border-radius: 25px;
+            background-color: #f4f4f4;
+        }
+
+        .input-field {
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background-color: rgba(77, 148, 153, 1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #336e72;
+        }
+
+        button {
+            background-color: #680dd8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            height: 70px;
+            width: 200px;
+            font-size: 25px;
+
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav style="background-color: rgba(77, 148, 153, 1);">
+    <div class="logo">
+        <img src="https://signifiya.tech/img.png" alt="Logo" />
+        SIGNIFIYA 2025
+    </div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Events</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+<center>
+<h1>Registration Form</h1></center>
+<form action="/send" method="POST" class="registration-form">
+    <input type="text" name="name" placeholder="Enter your name" class="input-field">
+    <input type="text" name="roll" placeholder="Enter your roll" class="input-field">
+    <input type="submit" value="Submit" class="submit-btn">
+</form>
+
+<div class="card-section">
+    <div class="card"><img src="https://signifiya.tech/Event/13.png" alt="Event Image 1"></div>
+    <div class="card"><img src="https://signifiya.tech/Event/1.png" alt="Event Image 2"></div>
+    <div class="card"><img src="https://signifiya.tech/Event/11.png" alt="Event Image 3"></div>
+    <div class="card"><img src="https://signifiya.tech/Event/4.png" alt="Event Image 4"></div>
+    <div class="card"><img src="https://signifiya.tech/Event/14.png" alt="Event Image 5"></div>
+    <div class="card"><img src="https://signifiya.tech/Event/3.png" alt="Event Image 6"></div>
+</div>
+<button>
+    <a href="/display">Data List</a>
+</button>
+</body>
+</html>
